@@ -1,15 +1,43 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome!");
+        Scanner in = new Scanner(System.in);
+        // Take input from user till user does not press X or x
+        int ans = 0;
+        while(true){
+            // take the operator as input
+            System.out.print("Enter the operator: ");
+            char op = in.next().trim().charAt(0);
+            if(op == '+' || op == '-' || op == '/' || op == '*' || op == '%'){
+                // input two numbers
+                System.out.print("Enter two numbers: ");
+                int num1 = in.nextInt();
+                int num2 = in.nextInt();
+                if(op == '+'){
+                    ans = num1 + num2;
+                }
+                if(op == '-'){
+                    ans = num1 - num2;
+                }
+                if(op == '*'){
+                    ans = num1 * num2;
+                }
+                if(op == '/'){
+                    if(num2 != 0){
+                        ans = num1 / num2;
+                    }
+                }
+                if(op == '%'){
+                    ans = num1 % num2;
+                }
+            } else if (op == 'x' || op == 'X'){
+                break;
+            } else {
+                System.out.println("invalid operation");
+            }
+            System.out.println(ans);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
         }
     }
 }
